@@ -1,1 +1,1 @@
-customed Python script for Bioinformatics
+customed Python scripts for Bioinformatics
