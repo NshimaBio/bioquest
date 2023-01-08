@@ -1,9 +1,10 @@
+.DS_Store
 __pycache__
 ./_data/__pycache__
+./_data/.DS_Store
 ./dl/__pycache__
 ./ml/__pycache__
 ./pl/__pycache__
 ./sc/__pycache__
 ./st/__pycache__
 ./tl/__pycache__
-.DS_Store
