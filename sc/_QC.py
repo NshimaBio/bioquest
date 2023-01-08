@@ -69,7 +69,7 @@ def qcMetrics(adata:sc.AnnData,
 
 
 def doubletMetrics(
-    adata:AnnData,
+    adata:sc.AnnData,
     *,
     od:str='./',
     prefix:str='',
@@ -77,7 +77,7 @@ def doubletMetrics(
     dpi:int = 300,
     formats:Union[str,Tuple[str,...]] = ('pdf','png'),
     inplace:bool = True,
-    ) -> Optional[AnnData]:
+    ) -> Optional[sc.AnnData]:
     """
     """
     import doubletdetection
