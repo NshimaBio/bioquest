@@ -4,8 +4,8 @@ from bioinfokit import analys
 from ._IO import read_csv_gz
 import bioquest as bq
 
-def geneIDconverter(frame, from_id='Ensembl', to_id='Symbol', keep_from=False, gene_type=False):
-    annot = read_csv_gz('humanGene.csv.gz',index_col=from_id,usecols=[from_id,to_id,'GeneType'])
+def geneIDconverter(frame, from_id='Ensembl', to_id='Symbol', keep_from=False, gene_type=None):
+    annot = read_csv_gz('HumanSymbolEnsemblGencodeV42.csv.gz',index_col=from_id)
     if gene_type:
         gene_type = annot.GeneType.isin(gene_type)
         annot = annot.loc[gene_type:, [to_id]]
@@ -29,12 +29,11 @@ def unique_exprs(frame,reductions=np.median):
 	frame['Ref'] = frame.index
 	frame.drop_duplicates(subset='Ref',inplace=True)
 	return frame.drop(columns='Ref')
-
 def count2tpm(frame,geneid='Symbol'):
-    annot = read_csv_gz('humanGene.csv.gz',index_col=geneid,usecols=[geneid,'length'])
+    annot = read_csv_gz('HumanExonLengthGencodeV42.csv.gz',usecols=[geneid,'Length'],index_col=geneid)
     _df = pd.merge(annot, frame, left_index=True, right_index=True)
     nm = analys.norm()
-    nm.tpm(df=_df, gl='length')
+    nm.tpm(df=_df, gl='Length')
     return nm.tpm_norm
 
 def get_TCGA_mRNA(arrow,formats='tpm',gene_id='gene_name',gene_type='protein_coding'):
@@ -43,7 +42,7 @@ def get_TCGA_mRNA(arrow,formats='tpm',gene_id='gene_name',gene_type='protein_cod
 	# 筛选编码蛋白基因
 	if gene_type:
 		_df = _df.loc[_df.gene_type==gene_type,:]
-	# 筛选tpm数据
+	# 筛选tpm数据ß
 	if formats == 'tpm':
 		_pattern = r'^tpm_unstranded_'
 	if formats =='count':

@@ -3,15 +3,17 @@ import pandas as pd
 from typing import Union, Optional
 
 
-def select(frame, pattern=None, columns=None):
+def select(frame, columns=None, pattern=None):
     """
     select a DataFrame columns according to `subsets` conditions
     """
-    if pattern:
-        cidx = bq.st.detect(string=frame.columns, pattern=pattern)
     if columns:
         cidx = frame.columns.isin(values=columns)
-    return frame.loc[:, cidx]
+        _f1 = frame.loc[:, cidx]
+    if pattern:
+        cidx = bq.st.detect(string=frame.columns, pattern=pattern)
+        _f2 = frame.loc[:, cidx]
+    return pd.concat(objs=[_f1,_f2],axis=1)
 
 
 def subset(

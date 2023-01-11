@@ -64,11 +64,11 @@ def deg_filter(
         filter_label='significant down'
         ) -> pd.DataFrame:
     sig_df = df.loc[df.Change != siglabel[1], :]
-    n_degs = sig_df.shape[0]
     if top_n:
         _df = df.sort_values(by=[lfc])
+        nrow = df.shape[0]
         dfslice = list(range(0, top_n)) + \
-            list(range(n_degs-top_n, n_degs))
+            list(range(nrow-top_n, nrow))
         return _df.iloc[dfslice, :]
     else:
         return sig_df.loc[df.Change == filter_label, :]

@@ -35,7 +35,7 @@ def mkdir(od: str):
 def read_csv_gz(
 	data_file_name: str,
 	index_col,
-	usecols,
+	usecols=None,
 	sep=',',
 	*,
 	encoding="utf-8",
