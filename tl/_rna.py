@@ -58,3 +58,4 @@ def get_TCGA_mRNA(arrow,formats='tpm',gene_id='gene_name',gene_type='protein_cod
 	return bq.tl.unique_exprs(_df)
 
 # 基因长度https://www.jianshu.com/p/abea4033b61e
+
