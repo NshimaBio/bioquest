@@ -5,3 +5,4 @@ from ._plot import *
 from ._integration import *
 from .gene_level_analysis import *
 from .tools import subset
+from .cell_type_annotation import labeled,label_helper
