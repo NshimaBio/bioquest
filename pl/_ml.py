@@ -5,7 +5,7 @@ from matplotlib.figure import Figure
 from sklearn.metrics import RocCurveDisplay
 from sklearn.calibration import CalibrationDisplay
 from sklearn.preprocessing import MinMaxScaler
-from bioquest.pl._pallete import Pallete
+from ._palette import Palette
 
 def ROC(y_true, y_hat, od=None,suff='') -> Figure:
 	"""
@@ -16,7 +16,7 @@ def ROC(y_true, y_hat, od=None,suff='') -> Figure:
 	falg: filename suffix 
 	"""
 	for i in range(y_hat.shape[1]):
-		RocCurveDisplay.from_predictions(y_true, y_hat.iloc[:,i], name = y_hat.columns[i], color= Pallete.set2[i], ax=plt.gca(),linewidth=2)
+		RocCurveDisplay.from_predictions(y_true, y_hat.iloc[:,i], name = y_hat.columns[i], color= Palette.set2[i], ax=plt.gca(),linewidth=2)
 	plt.plot([0,1],[0,1], linestyle="dashed",color = "grey");
 	plt.ylabel("True Positive Rate");
 	plt.xlabel("False Positive Rate");
@@ -42,7 +42,7 @@ def CC(y_true, y_hat, od=None,suff='') -> Figure:
 	else:
 		y = y_hat.values
 	for i in range(y_hat.shape[1]):
-		CalibrationDisplay.from_predictions(y_true, y[:,i], name = names[i], color= Pallete.set2[i], ax=plt.gca(),linewidth=2)
+		CalibrationDisplay.from_predictions(y_true, y[:,i], name = names[i], color= Palette.set2[i], ax=plt.gca(),linewidth=2)
 	plt.plot([0,1],[0,1], linestyle="dashed",color = "grey");
 	plt.ylabel("True Positive Rate");
 	plt.xlabel("False Positive Rate");
