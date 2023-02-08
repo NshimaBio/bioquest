@@ -12,7 +12,7 @@ def select(frame, columns=None, pattern=None):
         cidx = frame.columns.isin(values=columns)
         _objs.append(frame.loc[:, cidx])
     if pattern:
-        cidx = bq.st.detect(string=frame.columns, pattern=pattern)
+        cidx = bq.st.detects(string=frame.columns, pattern=pattern)
         _objs.append(frame.loc[:, cidx])
     return pd.concat(objs=_objs,axis=1)
 
