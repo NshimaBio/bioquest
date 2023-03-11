@@ -5,7 +5,7 @@ import bioquest as bq
 
 # parameter string: single string (such as "TCGA-G3-H383-11A")
 bq.st.detect(string,pattern,flags)
-bq.st.sub(string,pattern,flags)
+bq.st.sub(string,start,stop)
 bq.st.replace(string,pattern,repl,count)
 bq.st.remove(string,pattern,flags)
 bq.st.count(string,pattern,flags)
@@ -14,7 +14,7 @@ bq.st.grep(string,pattern,flags)
 # parameter string: a list of strings 
 # (such as ["TCGA-G3-H383-11A","TCGA-G3-H383-01A","TCGA-G3-H383-02A"])
 bq.st.detects(string,pattern,flags)
-bq.st.subs(string,pattern,flags)
+bq.st.subs(string,start,stop)
 bq.st.replaces(string,pattern,repl,count)
 bq.st.removes(string,pattern,flags)
 bq.st.counts(string,pattern,flags)
