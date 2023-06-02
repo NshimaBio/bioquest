@@ -1,4 +1,3 @@
-from ast import pattern
 import itertools
 import re
 import numpy as np
